@@ -1,11 +1,14 @@
-package org.bonn.ooka.buchungssystem.ss2022;
+package org.bonn.ooka.buchungssystem.ss2022.test;
+
+import org.bonn.ooka.buchungssystem.ss2022.DBAccess;
+import org.bonn.ooka.buchungssystem.ss2022.Hotel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-public class HotelPortImpl implements HotelPort{
+public class HotelPortImpl implements HotelPort {
     // Hier wird das Adapter Pattern angewendet, um die Funktionalität des DBAccess-Objekts
     // in der HotelPortImpl-Klasse zu integrieren und eine einheitliche Schnittstelle für die Suche
     // nach Hotels bereitzustellen.
