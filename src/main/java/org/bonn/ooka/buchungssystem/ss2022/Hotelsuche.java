@@ -7,4 +7,5 @@ public interface Hotelsuche {
     public List<Hotel> getHotelByName(String name);
     public void openSession();
 
+    public void closeSession();
 }

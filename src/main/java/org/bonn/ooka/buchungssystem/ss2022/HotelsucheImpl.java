@@ -3,8 +3,6 @@ package org.bonn.ooka.buchungssystem.ss2022;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class HotelsucheImpl implements Hotelsuche {
 
@@ -17,12 +15,21 @@ public class HotelsucheImpl implements Hotelsuche {
         List<Hotel> hotelResult = new ArrayList<>();
         try  {
             searchResult = access.getObjects(DBAccess.HOTEL, name);
-            access.closeConnection();
+            closeSession();
         } catch (Exception ex) {
-            System.out.println(ex);
             return Collections.emptyList(); // Rückgabe einer leeren Liste bei einem Fehler
         }
-        if (searchResult.size() == 3) {
+        if(name == "*") {
+            for (int i = 0; i < searchResult.size(); i += 3) {
+                int id = Integer.parseInt(searchResult.get(i));
+                String hotelName = searchResult.get(i + 1);
+                String ort = searchResult.get(i + 2);
+                Hotel hotel = new Hotel(id, hotelName, ort);
+                hotelResult.add(hotel);
+            }
+            return hotelResult;
+
+        }else if (searchResult.size() == 3) {
             Hotel hotel = new Hotel(Integer.parseInt(searchResult.get(0)), searchResult.get(1), searchResult.get(2));
             hotelResult.add(hotel);
         }else {
@@ -43,5 +50,12 @@ public class HotelsucheImpl implements Hotelsuche {
     public void openSession() {
         access = new DBAccess();
         access.openConnection();
+    }
+
+    @Override
+    public void closeSession() {
+        if (access != null ) {
+            access.closeConnection();
+        }
     }
 }

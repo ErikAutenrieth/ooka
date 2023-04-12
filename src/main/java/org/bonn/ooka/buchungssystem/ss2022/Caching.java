@@ -8,4 +8,5 @@ import java.util.Objects;
 public interface Caching {
 
     public void cacheResult(String key, List<Object> value);
+    void clearCache();
 }

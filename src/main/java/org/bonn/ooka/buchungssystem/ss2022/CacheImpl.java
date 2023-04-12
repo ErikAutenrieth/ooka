@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SimpleCache implements Caching {
+public class CacheImpl implements Caching {
+
     private Map<String, List<Object>> cache;
 
-    public SimpleCache() {
+    public CacheImpl() {
         cache = new HashMap<>();
     }
 
@@ -16,12 +17,8 @@ public class SimpleCache implements Caching {
         cache.put(key, value);
     }
 
-    public List<Object> getCachedResult(String key) {
-        return cache.get(key);
-    }
-
+    @Override
     public void clearCache() {
         cache.clear();
     }
-
 }
