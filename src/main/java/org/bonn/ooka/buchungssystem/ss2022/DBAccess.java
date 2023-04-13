@@ -92,7 +92,49 @@ public class DBAccess {
 		}
 		return result;
 	}
-	
+
+	public List<String> getObjectsType( int type, String value  ){
+		/**
+		 * Diese Methode sucht nach Hotels in der Datenbank basierend auf dem übergebenen Typ und Wert.
+		 * Der Typ gibt an, nach welchem Kriterium gesucht werden soll (ID -> 1, Name -> 2 , Ort -> 3).
+		 * Der Wert ist der Suchbegriff, nach dem in der Datenbank gesucht wird.
+		 * Die Methode gibt eine Liste von Strings zurück, die die gefundenen Hotels repräsentieren.
+		 */
+		Statement st;
+		ResultSet rs;
+		List<String> result = new ArrayList();
+		if (value.equals("*") ) {value = "";}
+
+		try {
+			st = conn.createStatement();
+			String query = "";
+			switch (type) {
+				case 1: // Suche nach ID
+					query = "SELECT * FROM buchungsystem.hotel WHERE buchungsystem.hotel.id = " + value;
+					break;
+				case 2: // Suche nach Namen
+					query = "SELECT * FROM buchungsystem.hotel WHERE buchungsystem.hotel.name ilike " + "\'%" + value +  "%\'";
+					break;
+				case 3: // Suche nach Ort
+					query = "SELECT * FROM buchungsystem.hotel WHERE buchungsystem.hotel.ort ilike " + "\'%" + value +  "%\'";
+					break;
+				default:
+					throw new IllegalArgumentException("Ungültiger Wert für typ-Suche");
+			}
+			rs = st.executeQuery(query );
+			while (rs.next() ){
+				// System.out.println( "Hotel: " + rs.getString( "name" ) );
+				result.add( rs.getString( 1 ) );
+				result.add( rs.getString( 2 ) );
+				result.add( rs.getString( 3 ) );
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	public void closeConnection(){
 		   try {
 			conn.close();
@@ -102,6 +144,5 @@ public class DBAccess {
 		} 
 
 	}
-
 
 }

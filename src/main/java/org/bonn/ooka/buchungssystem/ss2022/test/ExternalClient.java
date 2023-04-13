@@ -1,7 +1,9 @@
-package org.bonn.ooka.buchungssystem.ss2022;
+package org.bonn.ooka.buchungssystem.ss2022.test;
 
-import org.bonn.ooka.buchungssystem.ss2022.test.HotelPort;
-import org.bonn.ooka.buchungssystem.ss2022.test.HotelPortImpl;
+import org.bonn.ooka.buchungssystem.ss2022.Hotel;
+import org.bonn.ooka.buchungssystem.ss2022.HotelRetrieval;
+import org.bonn.ooka.buchungssystem.ss2022.Hotelsuche;
+import org.bonn.ooka.buchungssystem.ss2022.test.HotelsucheImpl;
 
 import java.util.List;
 
@@ -17,14 +19,14 @@ public class ExternalClient {
         for (Hotel hotel : hotels) {System.out.println(hotel.toString());}
 
 
-        HotelRetrieval hotelRetrieval = new HotelRetrieval((HotelsucheImpl) hotelSearch);
+        HotelRetrieval hotelRetrieval = new HotelRetrieval();
 
         hotelRetrieval.getHotelByName("Hilton");
         hotelRetrieval.getHotelByName("Maritim");
         hotelRetrieval.getHotelByName("Hilton");
 
-        hotelRetrieval.getHotelByName("*");
-
+        List<Hotel> hotels2 =  hotelRetrieval.getHotelByName("*");
+        for (Hotel hotel : hotels2) {System.out.println(hotel.toString());}
 
 
     }

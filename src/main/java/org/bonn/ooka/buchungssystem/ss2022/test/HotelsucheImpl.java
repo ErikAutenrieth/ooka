@@ -1,4 +1,8 @@
-package org.bonn.ooka.buchungssystem.ss2022;
+package org.bonn.ooka.buchungssystem.ss2022.test;
+
+import org.bonn.ooka.buchungssystem.ss2022.DBAccess;
+import org.bonn.ooka.buchungssystem.ss2022.Hotel;
+import org.bonn.ooka.buchungssystem.ss2022.Hotelsuche;
 
 import java.util.ArrayList;
 import java.util.Collections;
