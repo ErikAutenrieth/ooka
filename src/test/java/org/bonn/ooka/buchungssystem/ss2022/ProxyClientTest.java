@@ -2,18 +2,13 @@ package org.bonn.ooka.buchungssystem.ss2022;
 
 import java.util.List;
 
-public class ProxyClient {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public static void hotelsToString(List<Hotel> list){
-        for (Hotel hotel: list){
-            System.out.println(hotel.toString());
-        }
-    }
+class ProxyClientTest {
 
-
-/*
-    public static void main(String[] args) {
-
+    @org.junit.jupiter.api.Test
+    void hotelsToString() {
+        
         String type = "einfach";
         Proxy hotelsuche = new Proxy(type);
 
@@ -23,16 +18,9 @@ public class ProxyClient {
 
         List<Hotel> h2 = hotelsuche.getHotelByName("Maritim");
 
-        hotelsToString(h2);
-
+        ProxyClient.hotelsToString(h2);
 
         List<Hotel> h3 = hotelsuche.getHotelByName("Falscher Name");
 
     }
-
-*/
-
 }
-
-
-
