@@ -93,7 +93,7 @@ public class DBAccess {
 		return result;
 	}
 
-	public List<String> getObjectsType( int type, String value  ){
+	public List<String> getObjectsType( int type, String value ){
 		/**
 		 * Diese Methode sucht nach Hotels in der Datenbank basierend auf dem übergebenen Typ und Wert.
 		 * Der Typ gibt an, nach welchem Kriterium gesucht werden soll (ID -> 1, Name -> 2 , Ort -> 3).

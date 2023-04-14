@@ -19,7 +19,11 @@ public class Proxy implements HotelRetrievalIf{
                         setHotelSeach(this.searchType);
                 }
         }
-
+        public static void hotelsToString(List<Hotel> list){
+                for (Hotel hotel: list){
+                        System.out.println(hotel.toString());
+                }
+        }
         @Override
         public List<Hotel> getHotelByName(String name) {
                 return this.retrieval.getHotelByName(name);
