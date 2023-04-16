@@ -18,7 +18,6 @@ class ProxyClientTest {
 
         List<Hotel> h2 = hotelsuche.getHotelByName("Maritim");
 
-        ProxyClient.hotelsToString(h2);
 
         // assert does throw an exception
         assertThrows(IllegalArgumentException.class, () -> {

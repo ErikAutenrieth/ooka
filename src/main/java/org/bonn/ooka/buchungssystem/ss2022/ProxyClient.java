@@ -19,7 +19,6 @@ public class ProxyClient {
 
     // start the application with start() method
     public static void start() {
-        
         main(null);
     }
 
@@ -27,9 +26,6 @@ public class ProxyClient {
     public static void stop() {
         System.exit(0);
     }
-
-
-
 
 }
 
